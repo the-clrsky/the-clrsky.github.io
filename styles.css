@@ -3,15 +3,10 @@ body {
     color: white;
     font-family: Arial, sans-serif;
 }
-.container {
-    text-align: center;
-    margin-top: 50px;
-}
-.hello-text {
-    font-size: 48px;
+.button1{
+    background-color: aqua;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
-.landing-text {
-    font-size: 50px;
-    margin-top: 90px;
-}
+
