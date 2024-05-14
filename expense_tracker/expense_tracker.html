@@ -10,9 +10,10 @@
     <div class="container">
         <h1>Expense Tracker</h1>
         <form id="expense-form">
-            <input type="text" id="expense_title" placeholder="Expense Title" required>
+            <input type="text" id="expense_title" placeholder="Expense Title">
             <input type="text" id="name" placeholder="Expense Name" required>
-            <input type="number" id="amount" placeholder="Amount" required>
+            <input type="number" id="quantity" placeholder="Quantity" required>
+            <input type="number" id="unit_price" placeholder="Unit Price" required>
             <select id="category" required>
                 <option value="" disabled selected>Select Category</option>
                 <option value="Food">Food</option>
@@ -22,13 +23,19 @@
             </select>
             <button type="submit">Add Expense</button>
         </form>
+        <button id="print-report">Print Report</button>
         <table id="expense-table">
             <thead>
                 <tr>
+                    <th colspan="6" id="expense-title-header"></th>
+                </tr>
+                <tr>
+                    <th>SL#</th>
                     <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
                     <th>Amount</th>
                     <th>Category</th>
-                    <th>Date</th>
                 </tr>
             </thead>
             <tbody id="expense-list"></tbody>
