@@ -40,3 +40,66 @@ body {
     overflow-x: hidden;
 }
 
+.container h2 {
+    padding: 2rem 0;
+    font-size: 4rem;
+    text-align: center;
+    color: var(--dark);
+}
+
+.budget_content {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.error_message {
+    background-color: var(--danger);
+    color: var(--light);
+    text-align: center;
+    padding: 1rem 0;
+    width: 650px;
+    margin: 0 auto;
+    border-radius: 5px;
+    display: none;
+}
+
+.ur_budget form input, .ur_expenses form input {
+    padding: 0.4rem 1rem;
+    width: 300px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 3px;
+}
+
+.ur_budget form input:focus, .ur_expenses form input:focus {
+    outline: none;
+}
+
+.ur_budget form, .ur_expenses form {
+    position: relative;
+}
+
+.budget_content .btn {
+    position: absolute;
+    right: 0;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    padding: 0.5rem 1rem;
+    color: var(--light);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background-color: var(--dark);
+}
+
+.budget_content .btn:active {
+    transform: scale(0.98);
+}
+
