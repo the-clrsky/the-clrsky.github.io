@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <script src="script.js"></script>
     <title>Event Expense Tracker</title>
 </head>
 <body>
@@ -20,14 +19,14 @@
                 <form>
                     <label for="budget">Your Budget: </label>
                     <input type="number" placeholder="Enter Budget" class="budget_input">
-                    <button class="btn" id="btn_budget">Calculate</button>
+                    <button class="btn" id="btn_budget">Add Budget</button>
                 </form>
             </div>
             <div class="ur_expenses">
                 <form>
                     <label for="expenses">Expense Details: </label>
-                    <input type="text" placeholder="Enter Expense Details" class="expense_input">
-                    <input type="number" placeholder="Enter Expense Amount" class="expense_input">
+                    <input type="text" placeholder="Expense Details" class="expense_input">
+                    <input type="number" placeholder="Expense Amount" class="expense_amount">
                     <button class="btn" id="btn_expenses">Add Expense</button>
                 </form>
             </div>
@@ -35,8 +34,44 @@
         <!--  Input Section End  -->
         
         <!--  Cards Start  -->
-
+        <ul class="cards">
+            <li>
+                <i class="bx bx-money"></i>
+                <span class="info">
+                    <h3><span>৳</span><span class="budget_card"></span></h3>
+                    <p>Budget</p>
+                </span>
+            </li>
+            <li>
+                <i class="bx bx-credit-card"></i>
+                <span class="info">
+                    <h3><span>৳</span><span class="expenses_card"></span></h3>
+                    <p>Expenses</p>
+                </span>
+            </li>
+            <li>
+                <i class="bx bx-dollar"></i>
+                <span class="info">
+                    <h3><span>৳</span><span class="balance_card"></span></h3>
+                    <p>Balance</p>
+                </span>
+            </li>
+        </ul>
         <!--  Cards End  -->
+
+        <!-- Table Start -->
+        <div class="tbl_content">
+            <h3>Expense Details</h3>
+            <div class="tbl_data">
+                <!--
+                <ul class="tbl_tr_content">
+
+                </ul>
+                -->
+            </div>
+        </div>
+        <!-- Table End -->
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
