@@ -228,3 +228,42 @@ body {
 .tbl_tr_content button:first-child {
     background-color: var(--success);
 }
+
+.print_content {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--light);
+    margin: 1rem 2rem;
+    border-radius: 5px;
+}
+
+.print_content input {
+    padding: 0.4rem 1rem;
+    width: 300px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 3px;
+}
+
+.print_content input:focus {
+    outline: none;
+}
+
+.print_content .btn {
+    outline: none;
+    border: none;
+    font-family: inherit;
+    padding: 0.5rem 1rem;
+    color: var(--light);
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--dark);
+}
+
+.print_content .btn:active {
+    transform: scale(0.98);
+}

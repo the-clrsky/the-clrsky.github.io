@@ -74,7 +74,7 @@ function addExpenses(expensesPara) {
                         <button type="button" class="btn_edit">Edit</button>
                         <button type="button" class="btn_delete">Delete</button>
                     </li>
-                </ul>`;
+                  </ul>`;
     tblRecordEl.insertAdjacentHTML("beforeend", HTML);
 
     // Edit
@@ -156,3 +156,104 @@ function errorMessage(message) {
         errorMesgEl.classList.remove("error");
     }, 2500);
 }
+
+// Print 
+document.addEventListener('DOMContentLoaded', function() {
+    const btnPrint = document.querySelector('#btn_print');
+    const eventInputEl = document.querySelector('.event_input');
+
+    btnPrint.addEventListener('click', function() {
+        printPage(eventInputEl.value);
+    });
+});
+
+function printPage(eventName) {
+    const budget = document.querySelector('.budget_card').textContent;
+    const expenses = document.querySelector('.expenses_card').textContent;
+    const balance = document.querySelector('.balance_card').textContent;
+
+    const expenseDetails = itemList.map(item => `
+        <tr>
+            <td>${item.id}</td>
+            <td>${item.title}</td>
+            <td>৳${item.amount}</td>
+        </tr>
+    `).join('');
+
+    const printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${eventName}</title>
+            <style>
+                body {
+                    font-family: "Poppins", sans-serif;
+                    padding: 20px;
+                }
+                h1, h2 {
+                    text-align: center;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+                table, th, td {
+                    border: 1px solid #ddd;
+                }
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                .card {
+                    display: inline-block;
+                    margin: 20px 10px;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                }
+                .card span {
+                    display: block;
+                    font-size: 1.5rem;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>${eventName}</h1>
+            <div class="card">
+                <h2>Budget</h2>
+                <span>৳${budget}</span>
+            </div>
+            <div class="card">
+                <h2>Expenses</h2>
+                <span>৳${expenses}</span>
+            </div>
+            <div class="card">
+                <h2>Balance</h2>
+                <span>৳${balance}</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Details</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${expenseDetails}
+                </tbody>
+            </table>
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+
