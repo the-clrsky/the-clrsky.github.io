@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Survey Form</title>
+</head>
+
+<body>
+
+  <div class="menu-bar">
+    <div class="name">Sadman Rahamat Bishal</div>
+    <div class="menu">
+      <a href="../index.html">Home</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+
+  <div class="background">
+
+    <div class="container">
+      <h1>Survey Form</h1>
+
+      <h4 id="errorText"></h4>
+
+      <form id="surveyForm">
+
+        <label for="name">
+          <b>Name: </b>
+        </label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="age">
+          <b>Age: </b>
+        </label><br>
+        <input type="number" id="age" name="age" required><br>
+
+        <label>
+          <b>Your favorite type of Sport: </b>
+        </label><br>
+        <div class="radio-group">
+          <div class="radio-item">
+            <input type="radio" id="indoor" name="type" value="Indoor" required>
+            <label for="indoor">Indoor</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" id="outdoor" name="type" value="Outdoor" required>
+            <label for="outdoor">Outdoor</label>
+          </div>
+          <div class="radio-item">
+            <input type="radio" id="both" name="type" value="Both" required>
+            <label for="both">Both</label>
+          </div>
+        </div>
+
+        <label for="favorite-sport">
+          <b>Favorite Sport to Watch: </b>
+        </label><br>
+        <input type="text" id="favorite-sport" name="favorite-sport" required><br>
+
+        <label for="favorite--sport">
+          <b>Favorite Sport to Play: </b>
+        </label><br>
+        <input type="text" id="favorite--sport" name="favorite--sport" required><br>
+
+        <label for="favorite-sport-person">
+          <b>Favorite Sports-person: </b>
+        </label><br>
+        <input type="text" id="favorite-sport-person" name="favorite-sport-person" required><br>
+
+        <label for="feedback">
+          <b>Your Thoughts on Sports (Optional): </b>
+        </label><br>
+        <input type="textarea" id="feedback" name="feedback"><br>
+
+        <button type="button" id="printButton">
+          <b>Print Survey</b>
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
