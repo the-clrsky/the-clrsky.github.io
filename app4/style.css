@@ -94,3 +94,41 @@ button {
   background-color: #e5dbff;
   padding: 0.8em 0;
 }
+
+.menu-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu-bar .name {
+  margin-left: 20px;
+  font-size: 24px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+  position: relative;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.name {
+  color: #ffffff;
+}
