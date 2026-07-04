@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { projects } from '../data/projects';
+---
+
+<BaseLayout
+  title="Projects"
+  description="Projects built by Sadman Rahamat Bishal."
+>
+  <div class="container page">
+    <h1 class="page-title">Projects</h1>
+    <div>
+      {projects.map((project, i) => (
+        <>
+          <ProjectRow project={project} />
+          {i < projects.length - 1 && <hr class="hairline" />}
+        </>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

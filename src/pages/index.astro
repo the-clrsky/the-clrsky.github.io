@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostRow from '../components/PostRow.astro';
+import ProjectRow from '../components/ProjectRow.astro';
+import { projects } from '../data/projects';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="Sadman R. Bishal"
+  description="Database administrator and data systems engineer based in Dhaka."
+>
+  <div class="container hero">
+    <h1 class="hero-name">Sadman Rahamat Bishal</h1>
+    <p class="hero-role">
+      <span class="accent-dot"></span>Database administrator · data systems · Dhaka
+    </p>
+    <p class="hero-intro">
+      I work on database reliability and data infrastructure — mostly Oracle and Postgres
+      in production, with occasional detours into pipelines and VoIP systems.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/the-clrsky" class="text-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:sadmanbishal@gmail.com" class="text-link">Email</a>
+      <a href="https://www.linkedin.com/in/sadman-rahamat-bishal/" class="text-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+
+  <section class="container section">
+    <h2 class="section-heading">Writing</h2>
+    <div>
+      {posts.map((post, i) => (
+        <>
+          <PostRow
+            href={`/writing/${post.slug}`}
+            title={post.data.title}
+            category={post.data.category}
+            date={post.data.date}
+          />
+          {i < posts.length - 1 && <hr class="hairline" />}
+        </>
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2 class="section-heading">Projects</h2>
+    <div>
+      {projects.map((project, i) => (
+        <>
+          <ProjectRow project={project} />
+          {i < projects.length - 1 && <hr class="hairline" />}
+        </>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-5);
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+  }
+
+  .hero-role {
+    margin-top: var(--space-2);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-intro {
+    margin-top: var(--space-3);
+    max-width: 34rem;
+    color: var(--text-secondary);
+  }
+
+  .hero-links {
+    margin-top: var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .section {
+    padding-bottom: var(--space-5);
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import CategoryTag from './CategoryTag.astro';
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div class="project-row">
+  <div class="project-row-top">
+    <span class="project-row-left">
+      <span class="project-name">{project.name}</span>
+      <CategoryTag category={project.category} />
+    </span>
+    <span class="project-tech mono">{project.tech}</span>
+  </div>
+  <p class="project-description">{project.description}</p>
+</div>
+
+<style>
+  .project-row {
+    padding: var(--space-2) 0;
+  }
+
+  .project-row-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .project-row-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .project-name {
+    color: var(--text);
+  }
+
+  .project-tech {
+    flex-shrink: 0;
+  }
+
+  .project-description {
+    margin-top: var(--space-1);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    .project-row-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+  }
+</style>

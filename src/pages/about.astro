@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="About Sadman Rahamat Bishal — database administrator and data systems engineer."
+>
+  <div class="container page">
+    <h1 class="page-title">About</h1>
+    <div class="page-body">
+      <p>
+        I'm a database administrator working across Oracle and Postgres, with a focus on
+        reliability, performance, and the less glamorous parts of keeping data systems running.
+      </p>
+      <p>
+        Outside of core DBA work, I spend time on data pipelines and, occasionally, VoIP
+        infrastructure — call quality monitoring and the systems behind it.
+      </p>
+      <p>
+        I'm based in Dhaka. This site is where I write up notes from that work and post the
+        occasional side project.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-body {
+    color: var(--text-secondary);
+    max-width: 36rem;
+  }
+
+  .page-body p {
+    margin-bottom: var(--space-3);
+  }
+
+  .page-body p:last-child {
+    margin-bottom: 0;
+  }
+</style>

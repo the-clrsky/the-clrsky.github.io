@@ -1,0 +1,63 @@
+---
+import CategoryTag from './CategoryTag.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  category: 'oracle' | 'postgres' | 'data' | 'voip';
+  date: Date;
+}
+
+const { href, title, category, date } = Astro.props;
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={href} class="post-row">
+  <span class="post-row-left">
+    <CategoryTag category={category} />
+    <span class="post-title">{title}</span>
+  </span>
+  <span class="post-date mono">{formattedDate}</span>
+</a>
+
+<style>
+  .post-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+  }
+
+  .post-row-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .post-title {
+    color: var(--text);
+    transition: color 0.15s ease;
+  }
+
+  .post-row:hover .post-title {
+    color: var(--accent);
+  }
+
+  .post-date {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    .post-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+  }
+</style>
