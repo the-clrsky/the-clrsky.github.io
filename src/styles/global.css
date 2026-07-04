@@ -21,7 +21,7 @@
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --content-width: 42rem;
+  --content-width: 56rem;
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
@@ -135,6 +135,15 @@ img, svg {
   letter-spacing: 0.08em;
   color: var(--text-muted);
   margin-bottom: var(--space-2);
+}
+
+.section-heading a {
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+.section-heading a:hover {
+  color: var(--accent);
 }
 
 @media (max-width: 640px) {

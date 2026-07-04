@@ -11,11 +11,8 @@ import { projects } from '../data/projects';
   <div class="container page">
     <h1 class="page-title">Projects</h1>
     <div>
-      {projects.map((project, i) => (
-        <>
-          <ProjectRow project={project} />
-          {i < projects.length - 1 && <hr class="hairline" />}
-        </>
+      {projects.map((project) => (
+        <ProjectRow project={project} />
       ))}
     </div>
   </div>

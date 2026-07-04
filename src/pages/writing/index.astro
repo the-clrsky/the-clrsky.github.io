@@ -13,19 +13,91 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
   description="Notes on databases, data systems, and infrastructure by Sadman Rahamat Bishal."
 >
   <div class="container page">
-    <h1 class="page-title">Writing</h1>
-    <div>
-      {posts.map((post, i) => (
-        <>
+    <div class="page-header">
+      <h1 class="page-title">Writing</h1>
+      <input
+        type="search"
+        id="writing-search"
+        class="search-input"
+        placeholder="Search posts…"
+        aria-label="Search posts by title or content"
+      />
+    </div>
+    <div id="writing-list">
+      {posts.map((post) => (
+        <div
+          class="writing-item"
+          data-search={`${post.data.title} ${post.data.description} ${post.body ?? ''}`.toLowerCase()}
+        >
           <PostRow
             href={`/writing/${post.slug}`}
             title={post.data.title}
             category={post.data.category}
             date={post.data.date}
           />
-          {i < posts.length - 1 && <hr class="hairline" />}
-        </>
+        </div>
       ))}
+      <p id="writing-empty" class="writing-empty" hidden>No matching posts.</p>
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header .page-title {
+    margin-bottom: 0;
+  }
+
+  .search-input {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    width: 16rem;
+    max-width: 100%;
+  }
+
+  .search-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .writing-empty {
+    color: var(--text-muted);
+    padding: var(--space-2) 0;
+  }
+</style>
+
+<script>
+  const input = document.getElementById('writing-search') as HTMLInputElement | null;
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.writing-item'));
+  const empty = document.getElementById('writing-empty');
+
+  input?.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    for (const item of items) {
+      const matches = !query || (item.dataset.search ?? '').includes(query);
+      item.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    }
+
+    if (empty) empty.hidden = visibleCount !== 0;
+  });
+</script>

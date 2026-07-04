@@ -31,30 +31,24 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
   </div>
 
   <section class="container section">
-    <h2 class="section-heading">Writing</h2>
+    <h2 class="section-heading"><a href="/writing">Writing</a></h2>
     <div>
-      {posts.map((post, i) => (
-        <>
-          <PostRow
-            href={`/writing/${post.slug}`}
-            title={post.data.title}
-            category={post.data.category}
-            date={post.data.date}
-          />
-          {i < posts.length - 1 && <hr class="hairline" />}
-        </>
+      {posts.map((post) => (
+        <PostRow
+          href={`/writing/${post.slug}`}
+          title={post.data.title}
+          category={post.data.category}
+          date={post.data.date}
+        />
       ))}
     </div>
   </section>
 
   <section class="container section">
-    <h2 class="section-heading">Projects</h2>
+    <h2 class="section-heading"><a href="/projects">Projects</a></h2>
     <div>
-      {projects.map((project, i) => (
-        <>
-          <ProjectRow project={project} />
-          {i < projects.length - 1 && <hr class="hairline" />}
-        </>
+      {projects.map((project) => (
+        <ProjectRow project={project} />
       ))}
     </div>
   </section>
@@ -80,7 +74,6 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
 
   .hero-intro {
     margin-top: var(--space-3);
-    max-width: 34rem;
     color: var(--text-secondary);
   }
 
