@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostRow from '../../components/PostRow.astro';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout
+  title="Writing"
+  description="Notes on databases, data systems, and infrastructure by Sadman Rahamat Bishal."
+>
+  <div class="container page">
+    <h1 class="page-title">Writing</h1>
+    <div>
+      {posts.map((post, i) => (
+        <>
+          <PostRow
+            href={`/writing/${post.slug}`}
+            title={post.data.title}
+            category={post.data.category}
+            date={post.data.date}
+          />
+          {i < posts.length - 1 && <hr class="hairline" />}
+        </>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

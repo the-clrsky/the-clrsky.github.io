@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const links = [
+  { label: 'Email', href: 'mailto:sadmanbishal@gmail.com', external: false },
+  { label: 'GitHub', href: 'https://github.com/the-clrsky', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sadman-rahamat-bishal/', external: true },
+];
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Sadman Rahamat Bishal."
+>
+  <div class="container page">
+    <h1 class="page-title">Contact</h1>
+    <p class="page-intro">The best way to reach me is by email. I'm also around on GitHub and LinkedIn.</p>
+    <ul class="contact-list">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-link"
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+          >{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title {
+    margin-bottom: var(--space-3);
+  }
+
+  .page-intro {
+    color: var(--text-secondary);
+    max-width: 34rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+  }
+</style>

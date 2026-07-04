@@ -1,0 +1,48 @@
+---
+interface Props {
+  category: 'oracle' | 'postgres' | 'data' | 'voip';
+}
+
+const { category } = Astro.props;
+
+const labels: Record<Props['category'], string> = {
+  oracle: 'Oracle',
+  postgres: 'Postgres',
+  data: 'Data',
+  voip: 'VoIP',
+};
+---
+
+<span class:list={['tag', `tag-${category}`]}>{labels[category]}</span>
+
+<style>
+  .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .tag-oracle {
+    background: var(--tag-oracle-bg);
+    color: var(--tag-oracle-text);
+  }
+
+  .tag-postgres {
+    background: var(--tag-postgres-bg);
+    color: var(--tag-postgres-text);
+  }
+
+  .tag-data {
+    background: var(--tag-data-bg);
+    color: var(--tag-data-text);
+  }
+
+  .tag-voip {
+    background: var(--tag-voip-bg);
+    color: var(--tag-voip-text);
+  }
+</style>
