@@ -31,6 +31,15 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
   </div>
 
   <section class="container section">
+    <h2 class="section-heading"><a href="/projects">Projects</a></h2>
+    <div>
+      {projects.map((project) => (
+        <ProjectRow project={project} />
+      ))}
+    </div>
+  </section>
+
+  <section class="container section">
     <h2 class="section-heading"><a href="/writing">Writing</a></h2>
     <div>
       {posts.map((post) => (
@@ -40,15 +49,6 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
           category={post.data.category}
           date={post.data.date}
         />
-      ))}
-    </div>
-  </section>
-
-  <section class="container section">
-    <h2 class="section-heading"><a href="/projects">Projects</a></h2>
-    <div>
-      {projects.map((project) => (
-        <ProjectRow project={project} />
       ))}
     </div>
   </section>
