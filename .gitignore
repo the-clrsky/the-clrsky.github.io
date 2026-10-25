@@ -17,3 +17,7 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Protoboard Editor: its own git repo (the-clrsky/Protoboard-Editor), kept in
+# this folder; it deploys itself to sadmanbishal.com/Protoboard-Editor/
+/Protoboard-Editor/
