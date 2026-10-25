@@ -1,6 +1,6 @@
 ---
 interface Props {
-  category: 'oracle' | 'postgres' | 'data' | 'voip';
+  category: 'oracle' | 'postgres' | 'data' | 'voip' | 'electronics';
 }
 
 const { category } = Astro.props;
@@ -10,6 +10,7 @@ const labels: Record<Props['category'], string> = {
   postgres: 'Postgres',
   data: 'Data',
   voip: 'VoIP',
+  electronics: 'Electronics',
 };
 ---
 
@@ -44,5 +45,10 @@ const labels: Record<Props['category'], string> = {
   .tag-voip {
     background: var(--tag-voip-bg);
     color: var(--tag-voip-text);
+  }
+
+  .tag-electronics {
+    background: var(--tag-electronics-bg);
+    color: var(--tag-electronics-text);
   }
 </style>

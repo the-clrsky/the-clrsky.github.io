@@ -12,7 +12,9 @@ const { project } = Astro.props;
 <div class="project-row">
   <div class="project-row-top">
     <span class="project-row-left">
-      <span class="project-name">{project.name}</span>
+      {project.href
+        ? <a href={project.href} class="project-name project-link">{project.name}</a>
+        : <span class="project-name">{project.name}</span>}
       <CategoryTag category={project.category} />
     </span>
     <span class="project-tech mono">{project.tech}</span>
@@ -41,6 +43,14 @@ const { project } = Astro.props;
 
   .project-name {
     color: var(--text);
+  }
+
+  .project-link {
+    transition: color 0.15s ease;
+  }
+
+  .project-link:hover {
+    color: var(--accent);
   }
 
   .project-tech {
