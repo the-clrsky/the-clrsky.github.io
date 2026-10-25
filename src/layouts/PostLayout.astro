@@ -6,7 +6,7 @@ interface Props {
   title: string;
   description: string;
   date: Date;
-  category: 'oracle' | 'postgres' | 'data' | 'voip';
+  category: 'oracle' | 'postgres' | 'data' | 'voip' | 'electronics';
 }
 
 const { title, description, date, category } = Astro.props;
@@ -63,5 +63,93 @@ const formattedDate = date.toLocaleDateString('en-US', {
 
   .post-body :global(p:last-child) {
     margin-bottom: 0;
+  }
+
+  .post-body :global(h2) {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    margin-bottom: var(--space-3);
+    padding-left: 1.4rem;
+  }
+
+  .post-body :global(ul) {
+    list-style: disc;
+  }
+
+  .post-body :global(ol) {
+    list-style: decimal;
+  }
+
+  .post-body :global(li) {
+    margin-bottom: var(--space-1);
+  }
+
+  .post-body :global(strong) {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .post-body :global(a) {
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .post-body :global(a:hover) {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .post-body :global(figure) {
+    margin: var(--space-4) 0;
+  }
+
+  .post-body :global(figure.narrow) {
+    max-width: 24rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post-body :global(figure img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .post-body :global(figcaption) {
+    margin-top: var(--space-1);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-3);
+    font-size: 0.9rem;
+  }
+
+  .post-body :global(th),
+  .post-body :global(td) {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-body :global(th) {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
   }
 </style>

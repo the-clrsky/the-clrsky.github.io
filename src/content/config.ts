@@ -6,7 +6,7 @@ const writing = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.date(),
-    category: z.enum(['oracle', 'postgres', 'data', 'voip']),
+    category: z.enum(['oracle', 'postgres', 'data', 'voip', 'electronics']),
     draft: z.boolean().default(false),
   }),
 });
